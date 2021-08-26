@@ -8,6 +8,7 @@ Create a new package called dto and inside define your UserDto object with at le
 - name.
 - email.
 - lastName.
+- createdAt.
 
 Create a new package called data and inside define your User data object with at least the following fields:
 - id.
@@ -15,6 +16,7 @@ Create a new package called data and inside define your User data object with at
 - email.
 - lastName.
 - createdAt.
+
 Create a new package called service an inside create the following interface:
 
 Create an implementation of the UserService using a HashMap data structure inside.
