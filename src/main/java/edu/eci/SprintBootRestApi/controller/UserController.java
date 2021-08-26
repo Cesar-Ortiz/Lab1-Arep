@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
-
+    private int cont=0;
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -20,15 +20,24 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> all()
-    {
-        return userService.all();
+    public ResponseEntity<List<User>> all() {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(userService.all());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping( "/{id}" )
     public ResponseEntity<User> findById(@PathVariable String id )
     {
-        return userService.findById(id);
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(userService.findById(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 
@@ -36,7 +45,8 @@ public class UserController {
     public ResponseEntity<User> create( @RequestBody UserDto userDto )
     {
         try {
-
+            cont=cont+1;
+            String id=String.valueOf(cont);
             User user = new User(id, userDto.getName(), userDto.getEmail(), userDto.getLastName(), userDto.getCreatedAt());
             return ResponseEntity.status(HttpStatus.OK).body(userService.create(user));
         }
