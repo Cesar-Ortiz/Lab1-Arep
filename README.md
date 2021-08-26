@@ -31,7 +31,7 @@ Make your service implementation UserServiceHashMap injectable using the @Servic
 5. Create a new package called controller and create a new class UserController inside.
 Annotate your UserController so it becomes a REST Controller, Inject your UserService implementation inside the UserController via the constructor:
 
-![](img/Controller.PNG)
+![](img/Controller1.PNG)
 
 ![](img/Controller2.PNG)
 
